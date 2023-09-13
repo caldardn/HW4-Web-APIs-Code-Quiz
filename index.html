@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/reset.css" />
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>JS Quiz Home</title>
+</head>
+
+<body>
+    <header>
+        <h1>The Ultimate JavaScript Quiz!</h1>
+    </header>
+
+    <main class="container">
+        <div id="home" class="flex-column flex-center">
+            <h2>Rules to the Quiz:</h2>
+            <ol class="rules">
+                <li>
+                    There are a total of five question.
+                </li>
+                <li>
+                    Your final score will be the remaing time you have when the quiz is complete.
+                </li>
+                <li>
+                    For each incorrect answer you will lose 5 seconds.
+                </li>
+                <li>
+                    The game will end when every question is answered or when the time hits 0.
+                </li>
+            </ol>
+            <h2>Ready?</h2>
+            
+            <button onclick="window.location.href='/quiz.html'" id="start-button">Start!</button>
+            <button onclick="window.location.href='/highscore.html'" id="score-button">View Highscores</button>
+        </div>
+    </main>
+    
+</body>
+
+</html>

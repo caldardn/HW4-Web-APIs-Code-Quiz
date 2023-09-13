@@ -1,0 +1,14 @@
+
+.rules {
+    border-color:rgb(92, 216, 233);
+    border-width: 5px;
+    border-style: solid; 
+    font-size: 20px; 
+}
+
+#start-button, #score-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
