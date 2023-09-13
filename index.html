@@ -4,20 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/reset.css" />
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="/assets/reset.css" />
+    <link rel="stylesheet" href="/assets/style.css">
     <title>JS Quiz Home</title>
 </head>
 
 <body>
     <header>
-        <h1>The Ultimate JavaScript Quiz!</h1>
+        <h1 >The Ultimate JavaScript Quiz!</h1>
+        <span id="timer">Remaining Time: 75</span>
     </header>
 
     <main class="container">
-        <div id="home">
-            <h2>Rules for the Quiz:</h2>
-            <ol class="rules">
+        <div id="rule-container">
+            <h2 >Rules for the Quiz:</h2>
+            <ol >
                 <li>
                     There are a total of five questions.
                 </li>
@@ -33,11 +34,20 @@
             </ol>
             <h2>Ready?</h2>
             
-            <button onclick="window.location.href='./quiz/quiz.html'" id="start-button">Start!</button>
+            <button id="start-button">Start!</button>
             <button onclick="window.location.href='./highscore/highscore.html'" id="score-button">View Highscores</button>
         </div>
+        <div id="question-container" class="hide">
+            <div id="question">Question</div>
+            <div id="answer-btn">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+        </div>
     </main>
-    
+    <script src="./assets/script.js"></script>
 </body>
 
 </html>
