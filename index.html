@@ -20,32 +20,28 @@
             <h2 >Rules for the Quiz:</h2>
             <ol >
                 <li>
-                    There are a total of five questions.
+                    1. There are a total of five questions.
                 </li>
                 <li>
-                    Your final score will be the remaing time you have when the quiz is complete.
+                    2. Your final score will be the remaing time you have when the quiz is complete.
                 </li>
                 <li>
-                    For each incorrect answer you will lose 5 seconds.
+                    3. For each incorrect answer you will lose 5 seconds.
                 </li>
                 <li>
-                    The game will end when every question is answered or when the time hits 0.
+                    4. The game will end when every question is answered or when the time hits 0.
                 </li>
             </ol>
-            <h2>Ready?</h2>
+            <h2 id="ready">Ready?</h2>
             
             <button id="start-button">Start!</button>
             <button onclick="window.location.href='./highscore/highscore.html'" id="score-button">View Highscores</button>
         </div>
         <div id="question-container" class="hide">
             <div id="question">Question</div>
-            <div id="answer-btn">
-                <button class="btn"></button>
-                <button class="btn"></button>
-                <button class="btn"></button>
-                <button class="btn"></button>
-            </div>
+            <div id="answer-btn"></div>
             <button id="next-btn">Next</button>
+            <!-- <button onclick="window.location.href='./highscore/highscore.html'" id="score-button" class="hide">View Highscores</button> -->
         </div>
     </main>
     <script src="./assets/script.js"></script>
