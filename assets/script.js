@@ -55,13 +55,17 @@ var questionsBank = [
 var timerEl = document.querySelector("#timer")
 var ruleEL = document.querySelector("#rule-container")
 var startButton = document.querySelector("#start-button")
-var highScoreEl = document.querySelector("score-button")
+var highScoreEl = document.querySelector("#score-button")
 var questionContainer = document.querySelector("#question-container")
 var questionEl = document.querySelector("#question")
 var answerEl = document.querySelector("#answer-btn")
 var nextEl = document.querySelector("#next-btn")
-var ansBtn = document.querySelector(".btn")
-index = 0
+// var ansBtn = document.querySelector(".btn")
+var selectEl = document.querySelector(".select")
+var contain = document.querySelector(".container")
+var scoreEl = document.querySelector("#highscore")
+var inputEl = document.querySelector("#input-initial")
+var index = 0
 var timeRemaining = 75
 
 
@@ -86,11 +90,20 @@ function countDown() {
 function startGame() {
     ruleEL.classList.add('hide')
     questionContainer.classList.remove('hide')
+    selectEl.classList.add('hide')
     countDown()
     currentQuestion()
 }
 
+function reset(){
+  // nextEl.style.display = "none"
+  while(answerEl.firstChild){
+    answerEl.removeChild(answerEl.firstChild)
+  }
+}
+
 function currentQuestion(){
+
     var selectedQuestion = questionsBank[index]
     var questionNum = index + 1 
     questionEl.textContent = questionNum + ". " + selectedQuestion.question
@@ -110,31 +123,81 @@ function currentQuestion(){
       });
 }
     
+
+
  function chosenAnswer(event){
     event.preventDefault()
     var chosenButton = event.target
     var correct = chosenButton.dataset.answer === "true"
 
-    Array.from(answerEl.children).forEach(function(button) {
-      if (button !== chosenButton) {
-        button.disabled = true;
-      }
-    });
-
+    // nextEl.classList.remove('hide')
+    
     if(correct){
         chosenButton.classList.add("correct")
     }if(!correct){
         chosenButton.classList.add("incorrect")
-        timeRemaining -= 5
+        timeRemaining -= 10
     }
-    
-    if(questionsBank.length > 4){
-      index++
-      nextEl.addEventListener('click', currentQuestion)
-
-    }
+    Array.from(answerEl.children).forEach(function(button) {
+      if (button !== chosenButton) {
+        button.disabled = true;
+      }
+      button.disabled = true
+      
+    });
     
  }
- 
 
+ function score(){
+  reset()
+ //  nextEl.textContent = "highscore"
+  nextEl.style.display = "none"
+  scoreEl.classList.remove('hide')
+  questionContainer.classList.add('hide')
+  questionContainer.style.display = "none"
+ }
+
+ function nextBtn(){
+  index++
+  if(index < questionsBank.length){
+    currentQuestion()
+  }else{
+    score()
+
+  }
+ }
+
+
+
+ nextEl.addEventListener('click', function(){
+  if(index < questionsBank.length){
+    nextBtn()
+    // nextEl.classList.add('hide')
+  }else{
+    // questionContainer.classList.add('hide')
+    startGame()
+  }
+
+ })
+  
+ function displayScore(){
+
+ }
+
+ inputEl.addEventListener("click", function(event){
+  var inital = inputEl.value;
+  if(inital === null){
+    displayMessage("Please enter your initals.")
+   } else{
+    displayMessage("Thank you!")
+    localStorage.setItem("inital",inital)
+    }
+  
+
+ })
+ highScoreEl.addEventListener("click", function(event) {
+  event.preventDefault();
+ score()
+
+})
  startButton.addEventListener('click', startGame)

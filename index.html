@@ -13,8 +13,9 @@
     <header>
         <h1 >The Ultimate JavaScript Quiz!</h1>
         <span id="timer">Remaining Time: 75</span>
+       
     </header>
-
+    <hr>
     <main class="container">
         <div id="rule-container">
             <h2 >Rules for the Quiz:</h2>
@@ -26,23 +27,42 @@
                     2. Your final score will be the remaing time you have when the quiz is complete.
                 </li>
                 <li>
-                    3. For each incorrect answer you will lose 5 seconds.
+                    3. For each incorrect answer you will lose 10 seconds.
                 </li>
                 <li>
                     4. The game will end when every question is answered or when the time hits 0.
                 </li>
             </ol>
+        </div>
+        <div class="select">
             <h2 id="ready">Ready?</h2>
             
-            <button id="start-button">Start!</button>
-            <button onclick="window.location.href='./highscore/highscore.html'" id="score-button">View Highscores</button>
+            <button id="start-button" class="btn">Start!</button>
+            <button id="score-button" class="btn">View Highscores</button>
         </div>
         <div id="question-container" class="hide">
-            <div id="question">Question</div>
-            <div id="answer-btn"></div>
-            <button id="next-btn">Next</button>
-            <!-- <button onclick="window.location.href='./highscore/highscore.html'" id="score-button" class="hide">View Highscores</button> -->
+            <h2 id="question">Question</h2>
+            <div id="answer-btn">
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+            </div>
+            <button id="next-btn" class="hide btn">Next</button>
+            
         </div>
+        
+    <form id="highscore" class="hide">
+        <h1>Game Over!</h1>
+        <h3>Score:</h3>
+       
+
+
+        <input id="input-initial" class="form-control" type="text" placeholder="Enter Initals">
+        <button type="submit" id="submit-intials" class="btn">Play Again?</button>
+        
+    </form>
+       
     </main>
     <script src="./assets/script.js"></script>
 </body>
