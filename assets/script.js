@@ -145,7 +145,7 @@ function currentQuestion() {
     button.textContent = selection.choice;
     button.classList.add("btn");
     answerEl.appendChild(button);
-
+    nextEl.classList.add("hide")
     if (selection.answer) {
       button.dataset.answer = selection.answer;
     }
@@ -171,6 +171,7 @@ function chosenAnswer(event) {
       button.disabled = true;
     }
      button.disabled = true;
+     nextEl.classList.remove("hide")
   });
   
 }

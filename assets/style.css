@@ -1,5 +1,5 @@
 
-#start-button, #score-button, #next-btn {
+#start-button, #score-button{
     flex-direction: row;
     background: blue;
     color: lightgray;
@@ -124,23 +124,9 @@ input::placeholder {
     justify-content: space-around;
     margin: 10px 10px 10px 10px;
     flex-direction: column;
-    
-    
 }
 
-#next-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-   
 
-}
-#next-btn:hover{
-    background: lightgrey;
-    color:blue;
-    
-}
 .hide {
     display: none;
 }
@@ -160,6 +146,8 @@ h2{
  text-align: center;
 }
 
-
+#next-btn{
+    text-align: center;
+}
 
 
