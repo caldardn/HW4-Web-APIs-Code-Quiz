@@ -108,7 +108,7 @@ var gameComplete = false;
 
 
 
-
+// when called starts the timer and stops the time when it reaches 0
 function countDown() {
   timeInterval = setInterval(() => {
     if (timeRemaining > 1) {
@@ -125,6 +125,7 @@ function countDown() {
   }, 1000);
 }
 
+// Function called when start button is clicked
 function startGame() {
   ruleEL.classList.add("hide");
   questionContainer.classList.remove("hide");
@@ -134,7 +135,7 @@ function startGame() {
   currentQuestion();
 }
 
-
+// This function displays the questions and answer choices in the questionBank variable and listens for the user to select an answer
 function currentQuestion() {
   var selectedQuestion = questionsBank[index];
   var questionNum = index + 1;
@@ -154,7 +155,7 @@ function currentQuestion() {
   
 }
 
-
+// This function is called once the user selects an answer and displays if the answer is correct or incorrect. It also disables the answers once the user has selected a choice.
 function chosenAnswer(event) {
   event.preventDefault();
   var chosenButton = event.target;
@@ -176,6 +177,7 @@ function chosenAnswer(event) {
   
 }
 
+// Function is called when the next button is selected and it's the last question in the array. It displays the highscore section and stops the time.
 function score() {
   timerEl.textContent = "Your Score: " + timeRemaining
   nextEl.style.display = "none";
@@ -188,6 +190,7 @@ function score() {
   
 }
 
+// When the next button is clicked it will add 1 to in index and add a new question and answers or call the score function
 function nextBtn() {
   index++;
   if (index < questionsBank.length) {
@@ -196,13 +199,14 @@ function nextBtn() {
     score();
   }
 }
-
+// This event listener is for the next button. 
 nextEl.addEventListener("click", function () {
   if (index < questionsBank.length) {
     nextBtn();
   } 
 });
 
+// when the play again button (Go back to home) is clicked it will refresh the page bringing the user back to the home page.
 var playAgain = document.querySelector('#play-again')
 var refreshPage = function() {
   location.reload();
@@ -211,13 +215,14 @@ var refreshPage = function() {
 playAgain.addEventListener('click', refreshPage)
 
 
-// the initial list
+// This section is for when the user adds their initials and their score
 
 var scoreInput = document.querySelector("#score-text");
 var scoreForm = document.querySelector("#score-form");
 var scoreList = document.querySelector("#score-list");
 var initial = [];
 
+// This function adds the score and initials as a list
 function renderScore() {
   scoreList.innerHTML = "";
   for (var i = 0; i < initial.length; i++) {
@@ -228,7 +233,7 @@ function renderScore() {
   }
 }
 
-
+// Checks to see if the user has add there initials
 function init() {
   var storedInitial = JSON.parse(localStorage.getItem("initial"));
   if (storedInitial !== null) {
@@ -237,13 +242,13 @@ function init() {
   renderScore();
 }
 
+// stores the initials and score in local storage
 function storeScore() {
   localStorage.setItem("initial", JSON.stringify(initial));
-  
   localStorage.setItem("score", JSON.stringify(timeRemaining));
-  console.log(timeRemaining)
 }
 
+// When the form input sees a sumbit occur it will push the initials entered as well as the score to a highscore list.
 scoreForm.addEventListener("submit", function(event) {
   event.preventDefault();
   var text = scoreInput.value.trim();
@@ -251,7 +256,6 @@ scoreForm.addEventListener("submit", function(event) {
     alert("please enter name")
     return;
   }
-  // timeRemaining = timeRemaining + 1
   var combine = {int:text, score:timeRemaining}
   initial.push(combine);
   scoreInput.value = "";
@@ -259,20 +263,11 @@ scoreForm.addEventListener("submit", function(event) {
   renderScore();
 });
 
-scoreList.addEventListener("click", function(event) {
-  var element = event.target;
-  if (element.matches("button") === true) {
-    var index = element.parentElement.getAttribute("data-index");
-    initial.splice(index, 1);
-    storeScore();
-    renderScore();
-  }
-});
 
 
 init()
 
-
+// when the highscore button is selected at the home page it will only display the highscore and not allow the user to add initials
 highScoreEl.addEventListener("click", function(event){
   var element = event.target;
   if (element.matches("button") === true) {
@@ -288,6 +283,6 @@ highScoreEl.addEventListener("click", function(event){
 
 })
 
-
+// When the user selects the Start button it starts the startGame Function
 startButton.addEventListener("click", startGame);
 

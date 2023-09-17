@@ -1,154 +1,144 @@
-
-#start-button, #score-button{
-    flex-direction: row;
-    background: blue;
-    color: lightgray;
-    font-weight: 600;
-    width: 150px;
-    border: 0px;
-    padding: 10px;
-    margin: 20px auto 0;
-    text-align: center;
-    border-radius: 10px;
-    
-   
-} 
-.btn{
-    background: lightgrey;
-    color:blue;
-    font-weight: 500;
-    width:  100%;
-    border: 1px solid black;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: left;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.5s;
-  }
-
-
-.correct{
-   background: rgb(4, 179, 4); 
-   color: white;
-   font-weight: bold;
-   
-}
-.incorrect{
-    background: rgb(239, 3, 3);
-    color: white;
-    font-weight: bold;
-}
-.btn:disabled{
-    cursor: not-allowed;
-}
-h1,h3, #timer{
+h1,
+h3,
+#timer {
   color: white;
-    
 }
 
-
-#timer{
-    font-size: 1.5rem;
-    padding-top: 15px;
+#timer {
+  font-size: 1.5rem;
+  padding-top: 15px;
 }
 
-body{
-    background: #307fda;
-  }
-
-header, h1{
-    padding: 10px; 
-    font-size: 2.4rem;
-    text-align: center;
-  
-}
-.container{
-   justify-content: center;
-   border-width: 5px;
-   padding: 10px;
-   width: 30%;
-   margin: auto;
-}
-#ready{
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
- 
-.select{
-  
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    background: white;
-    border-radius: 10px;
-    border: 1px solid black;
-    padding: 10px;
-
+body {
+  background: #307fda;
 }
 
-#rule-container, #score-card{
- 
-    padding: 10px; 
-    background: white;
-    color: rgb(0, 0, 0);
-    border-radius: 10px;
-    border: 1px solid black;
+header,
+h1 {
+  padding: 10px;
+  font-size: 2.4rem;
+  text-align: center;
+}
+.container {
+  justify-content: center;
+  border-width: 5px;
+  padding: 10px;
+  width: 30%;
+  margin: auto;
+}
+#ready {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-p{
-    margin: 15px 0px 10px 0px;
-    font-weight: 600;
-    color: blue;
+.select {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px;
 }
 
+#rule-container,
+#score-card {
+  padding: 10px;
+  background: white;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+p {
+  margin: 15px 0px 10px 0px;
+  font-weight: 600;
+  color: blue;
+}
 
 input::placeholder {
-    background: blue;
-    color: lightgray;
-  }
-
-#question-container{
-    margin-top: 10px;
-    background: white;;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid black;
-    
+  background: blue;
+  color: lightgray;
 }
 
-#answer-btn{
-    display: flex;
-    justify-content: space-around;
-    margin: 10px 10px 10px 10px;
-    flex-direction: column;
+#question-container {
+  margin-top: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
 }
-
 
 .hide {
-    display: none;
-}
-.btn:hover:not([disabled]){
-    background: blue;
-    color: lightgray;
+  display: none;
 }
 
-h2{
-    font-size: 18px;
-    color: blue;
-    font-weight: 600 ;
-    text-align: center;
-  }
-
-
-#score-card, #play-again{
- text-align: center;
+h2 {
+  font-size: 18px;
+  color: blue;
+  font-weight: 600;
+  text-align: center;
 }
 
-#next-btn{
-    text-align: center;
+#score-card,
+#play-again {
+  text-align: center;
 }
 
+#next-btn {
+  text-align: center;
+}
 
+#start-button,
+#score-button {
+  flex-direction: row;
+  background: blue;
+  color: lightgray;
+  font-weight: 600;
+  width: 150px;
+  border: 0px;
+  padding: 10px;
+  margin: 20px auto 0;
+  text-align: center;
+  border-radius: 10px;
+}
+.btn {
+  background: lightgrey;
+  color: blue;
+  font-weight: 500;
+  width: 100%;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: left;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.correct {
+  background: rgb(4, 179, 4);
+  color: white;
+  font-weight: bold;
+}
+.incorrect {
+  background: rgb(239, 3, 3);
+  color: white;
+  font-weight: bold;
+}
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.btn:hover:not([disabled]) {
+  background: blue;
+  color: lightgray;
+}
+
+#answer-btn {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 10px 10px 10px;
+  flex-direction: column;
+}
