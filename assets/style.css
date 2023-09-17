@@ -1,6 +1,5 @@
 
 #start-button, #score-button, #next-btn {
-
     flex-direction: row;
     background: blue;
     color: lightgray;
@@ -59,24 +58,16 @@ body{
   }
 
 header, h1{
-    /* border: red; */
-   
-    /* border-style: dashed; */
-    
     padding: 10px; 
     font-size: 2.4rem;
     text-align: center;
   
 }
 .container{
-   
    justify-content: center;
-   /* border: blue; */
    border-width: 5px;
-   /* border-style: dashed; */
-   
    padding: 10px;
-   width: 50%;
+   width: 30%;
    margin: auto;
 }
 #ready{
@@ -87,9 +78,7 @@ header, h1{
 }
  
 .select{
-    /* border: rgb(255, 0, 200);
-    border-width: 5px;
-    border-style: dashed; */
+  
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -100,16 +89,26 @@ header, h1{
 
 }
 
-#rule-container{
-    /* border: rgb(102, 255, 0); */
-    border-width: 5px;
-    /* border-style: dashed; */
+#rule-container, #score-card{
+ 
     padding: 10px; 
     background: white;
     color: rgb(0, 0, 0);
     border-radius: 10px;
     border: 1px solid black;
 }
+
+p{
+    margin: 15px 0px 10px 0px;
+    font-weight: 600;
+    color: blue;
+}
+
+
+input::placeholder {
+    background: blue;
+    color: lightgray;
+  }
 
 #question-container{
     margin-top: 10px;
@@ -156,6 +155,10 @@ h2{
     font-weight: 600 ;
   }
 
+
+#score-card, #play-again{
+ text-align: center;
+}
 
 
 

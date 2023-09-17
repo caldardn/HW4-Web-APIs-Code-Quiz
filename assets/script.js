@@ -95,13 +95,19 @@ var nextEl = document.querySelector("#next-btn");
 
 var selectEl = document.querySelector(".select");
 var contain = document.querySelector(".container");
-var scoreEl = document.querySelector("#highscore");
+var scoreCard = document.querySelector("#score-card")
+
 var inputEl = document.querySelector("#input-initial");
 var playEl = document.querySelector("#play-again");
 var index = 0;
 var timeRemaining = 75;
 var timeInterval = null;
 var gameComplete = false;
+
+
+
+
+
 
 function countDown() {
   timeInterval = setInterval(() => {
@@ -123,15 +129,11 @@ function startGame() {
   ruleEL.classList.add("hide");
   questionContainer.classList.remove("hide");
   selectEl.classList.add("hide");
+ 
   countDown();
   currentQuestion();
 }
 
-function reset() {
-  while (answerEl.firstChild) {
-    answerEl.removeChild(answerEl.firstChild);
-  }
-}
 
 function currentQuestion() {
   var selectedQuestion = questionsBank[index];
@@ -149,14 +151,14 @@ function currentQuestion() {
     }
     button.addEventListener("click", chosenAnswer);
   });
+  
 }
+
 
 function chosenAnswer(event) {
   event.preventDefault();
   var chosenButton = event.target;
   var correct = chosenButton.dataset.answer === "true";
-
-  // nextEl.classList.remove('hide')
 
   if (correct) {
     chosenButton.classList.add("correct");
@@ -168,19 +170,21 @@ function chosenAnswer(event) {
     if (button !== chosenButton) {
       button.disabled = true;
     }
-    button.disabled = true;
+     button.disabled = true;
   });
+  
 }
 
 function score() {
-  reset();
-
+  timerEl.textContent = "Your Score: " + timeRemaining
   nextEl.style.display = "none";
-  scoreEl.classList.remove("hide");
-  questionContainer.classList.add("hide");
   questionContainer.style.display = "none";
+  ruleEL.style.display = "none"
+  selectEl.style.display = "none"
+  scoreCard.classList.remove("hide")
   clearInterval(timeInterval);
-  localStorage.setItem("score", timeRemaining);
+  
+  
 }
 
 function nextBtn() {
@@ -195,17 +199,94 @@ function nextBtn() {
 nextEl.addEventListener("click", function () {
   if (index < questionsBank.length) {
     nextBtn();
-  } else {
-    startGame();
+  } 
+});
+
+var playAgain = document.querySelector('#play-again')
+var refreshPage = function() {
+  location.reload();
+
+}
+playAgain.addEventListener('click', refreshPage)
+
+
+// the initial list
+
+var scoreInput = document.querySelector("#score-text");
+var scoreForm = document.querySelector("#score-form");
+var scoreList = document.querySelector("#score-list");
+var initial = [];
+
+function renderScore() {
+  scoreList.innerHTML = "";
+  for (var i = 0; i < initial.length; i++) {
+    var initials = initial[i];
+    var li = document.createElement("li");
+    li.textContent = initials.int + "'s " + "Highscore " + initials.score;
+    scoreList.appendChild(li);
+  }
+}
+
+
+function init() {
+  var storedInitial = JSON.parse(localStorage.getItem("initial"));
+  if (storedInitial !== null) {
+    initial = storedInitial;
+  }
+  renderScore();
+}
+
+function storeScore() {
+  localStorage.setItem("initial", JSON.stringify(initial));
+  
+  localStorage.setItem("score", JSON.stringify(timeRemaining));
+  console.log(timeRemaining)
+}
+
+scoreForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+  var text = scoreInput.value.trim();
+  if (text === "") {
+    alert("please enter name")
+    return;
+  }
+  // timeRemaining = timeRemaining + 1
+  var combine = {int:text, score:timeRemaining}
+  initial.push(combine);
+  scoreInput.value = "";
+  storeScore();
+  renderScore();
+});
+
+scoreList.addEventListener("click", function(event) {
+  var element = event.target;
+  if (element.matches("button") === true) {
+    var index = element.parentElement.getAttribute("data-index");
+    initial.splice(index, 1);
+    storeScore();
+    renderScore();
   }
 });
 
 
+init()
 
 
-highScoreEl.addEventListener("click", function (event) {
-  event.preventDefault();
-  score();
-});
+highScoreEl.addEventListener("click", function(event){
+  var element = event.target;
+  if (element.matches("button") === true) {
+
+  timerEl.textContent = ""
+  nextEl.style.display = "none";
+  questionContainer.style.display = "none";
+  ruleEL.style.display = "none"
+  selectEl.style.display = "none"
+  scoreInput.style.display = "none"
+  scoreCard.classList.remove("hide")
+  }
+
+})
+
+
 startButton.addEventListener("click", startGame);
 

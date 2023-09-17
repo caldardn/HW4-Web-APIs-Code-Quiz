@@ -11,14 +11,14 @@
 
 <body>
     <header>
-        <h1 >The Ultimate JavaScript Quiz!</h1>
+        <h1>The Ultimate JavaScript Quiz!</h1>
         <span id="timer">Remaining Time: 75</span>
     </header>
- 
+
     <main class="container">
         <div id="rule-container">
-            <h2 >Rules for the Quiz:</h2>
-            <ol >
+            <h2>Rules for the Quiz:</h2>
+            <ol>
                 <li>
                     1. There are a total of five questions.
                 </li>
@@ -35,7 +35,7 @@
         </div>
         <div class="select">
             <h2 id="ready">Ready?</h2>
-            
+
             <button id="start-button" class="btn">Start!</button>
             <button id="score-button" class="btn">View Highscores</button>
         </div>
@@ -47,24 +47,24 @@
                 <button class="btn"></button>
                 <button class="btn"></button>
             </div>
-            <button id="next-btn" class="btn">Next</button>
-            
+            <button id="next-btn" class="btn hide">Next</button>
+
         </div>
-        
-    <form id="highscore" class="hide">
-        <h1>Game Over!</h1>
-        <h3>Score:</h3>
-        <input id="input-initial" class="form-control" type="text" placeholder="Enter Initals">
-        <button id="play-again" class="btn">Play Again?</button>
-    </form>
 
-    <!-- <form id="highscore-form" class="hide" method="POST">
-     
-        <input type="text" placeholder="Enter Initals" name="highscore-text" id="highscore-text">
-    </form> -->
 
-    <p>Highscores: <span id="highscore-count"></span></p>
-    <ul id="highscore-list"></ul>
+    <div id="flex-score">
+        <div id="score-card" class="hide">
+            <button id="play-again" class="btn">Go back to home</button>
+         
+            <form id="score-form" method="POST">
+                <input type="text" placeholder="Enter initials" name="score-text" id="score-text" />
+            </form>
+
+            <p>Highscores: <span id="score-count"></span></p>
+            <ul id="score-list"></ul>
+        </div>
+     </div>
+
 
     </main>
     <script src="./assets/script.js"></script>
