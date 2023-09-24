@@ -95,17 +95,13 @@ var nextEl = document.querySelector("#next-btn");
 
 var selectEl = document.querySelector(".select");
 var contain = document.querySelector(".container");
-var scoreCard = document.querySelector("#score-card")
+var scoreCard = document.querySelector("#score-card");
 
 var inputEl = document.querySelector("#input-initial");
 var playEl = document.querySelector("#play-again");
 var index = 0;
 var timeRemaining = 75;
 var timeInterval = null;
-var gameComplete = false;
-
-
-
 
 
 // when called starts the timer and stops the time when it reaches 0
@@ -130,7 +126,7 @@ function startGame() {
   ruleEL.classList.add("hide");
   questionContainer.classList.remove("hide");
   selectEl.classList.add("hide");
- 
+
   countDown();
   currentQuestion();
 }
@@ -146,13 +142,12 @@ function currentQuestion() {
     button.textContent = selection.choice;
     button.classList.add("btn");
     answerEl.appendChild(button);
-    nextEl.classList.add("hide")
+    nextEl.classList.add("hide");
     if (selection.answer) {
       button.dataset.answer = selection.answer;
     }
     button.addEventListener("click", chosenAnswer);
   });
-  
 }
 
 // This function is called once the user selects an answer and displays if the answer is correct or incorrect. It also disables the answers once the user has selected a choice.
@@ -171,23 +166,20 @@ function chosenAnswer(event) {
     if (button !== chosenButton) {
       button.disabled = true;
     }
-     button.disabled = true;
-     nextEl.classList.remove("hide")
+    button.disabled = true;
+    nextEl.classList.remove("hide");
   });
-  
 }
 
 // Function is called when the next button is selected and it's the last question in the array. It displays the highscore section and stops the time.
 function score() {
-  timerEl.textContent = "Your Score: " + timeRemaining
+  timerEl.textContent = "Your Score: " + timeRemaining;
   nextEl.style.display = "none";
   questionContainer.style.display = "none";
-  ruleEL.style.display = "none"
-  selectEl.style.display = "none"
-  scoreCard.classList.remove("hide")
+  ruleEL.style.display = "none";
+  selectEl.style.display = "none";
+  scoreCard.classList.remove("hide");
   clearInterval(timeInterval);
-  
-  
 }
 
 // When the next button is clicked it will add 1 to in index and add a new question and answers or call the score function
@@ -199,21 +191,19 @@ function nextBtn() {
     score();
   }
 }
-// This event listener is for the next button. 
+// This event listener is for the next button.
 nextEl.addEventListener("click", function () {
   if (index < questionsBank.length) {
     nextBtn();
-  } 
+  }
 });
 
 // when the play again button (Go back to home) is clicked it will refresh the page bringing the user back to the home page.
-var playAgain = document.querySelector('#play-again')
-var refreshPage = function() {
+var playAgain = document.querySelector("#play-again");
+var refreshPage = function () {
   location.reload();
-
-}
-playAgain.addEventListener('click', refreshPage)
-
+};
+playAgain.addEventListener("click", refreshPage);
 
 // This section is for when the user adds their initials and their score
 
@@ -249,40 +239,35 @@ function storeScore() {
 }
 
 // When the form input sees a sumbit occur it will push the initials entered as well as the score to a highscore list.
-scoreForm.addEventListener("submit", function(event) {
+scoreForm.addEventListener("submit", function (event) {
   event.preventDefault();
   var text = scoreInput.value.trim();
   if (text === "") {
-    alert("please enter name")
+    alert("please enter name");
     return;
   }
-  var combine = {int:text, score:timeRemaining}
+  var combine = { int: text, score: timeRemaining };
   initial.push(combine);
   scoreInput.value = "";
   storeScore();
   renderScore();
 });
 
-
-
-init()
+init();
 
 // when the highscore button is selected at the home page it will only display the highscore and not allow the user to add initials
-highScoreEl.addEventListener("click", function(event){
+highScoreEl.addEventListener("click", function (event) {
   var element = event.target;
   if (element.matches("button") === true) {
-
-  timerEl.textContent = ""
-  nextEl.style.display = "none";
-  questionContainer.style.display = "none";
-  ruleEL.style.display = "none"
-  selectEl.style.display = "none"
-  scoreInput.style.display = "none"
-  scoreCard.classList.remove("hide")
+    timerEl.textContent = "";
+    nextEl.style.display = "none";
+    questionContainer.style.display = "none";
+    ruleEL.style.display = "none";
+    selectEl.style.display = "none";
+    scoreInput.style.display = "none";
+    scoreCard.classList.remove("hide");
   }
-
-})
+});
 
 // When the user selects the Start button it starts the startGame Function
 startButton.addEventListener("click", startGame);
-

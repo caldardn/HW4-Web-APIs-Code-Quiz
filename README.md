@@ -29,5 +29,9 @@ This challenge was to build a timed coding quiz with multiple-choice questions. 
 
 <img src="./assets/images/Quiz Application.png" alt="Image of the quiz application."/>
 
+Deployed link: https://caldardn.github.io/HW4-Web-APIs-Code-Quiz/
+
+Repo Link: https://github.com/caldardn/HW4-Web-APIs-Code-Quiz
+
 ## Credits 
 Window location.reload(). Location reload() Method. (n.d.). https://www.w3schools.com/jsref/met_loc_reload.asp 
